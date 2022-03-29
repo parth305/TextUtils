@@ -45,12 +45,13 @@ export default function Myexport() {
         <div>
             <Navbar title="Textutils" abouttext="About TextUtils" mode={mode} togglemode={togglemode} color={color} changecolor={changecolor} />
             <Alerts alert={alert} />
-            <Routes>
+            {/* <Routes>
                 <Route exact path="/about" element={<About />}>
                 </Route>
                 <Route exact path="/" element={<TextForm heading="Enter yor text to analyze" mode={mode} showalert={showalert} color={color} />}>
                 </Route>
-            </Routes>
+            </Routes> */}
+            <TextForm heading="Enter yor text to analyze" mode={mode} showalert={showalert} color={color} />
         </div>
     )
 }
