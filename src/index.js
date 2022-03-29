@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <React.StrictMode>
+  <React.StrictMode>    {/*strict mode will not let u write lose js like variable without name*/}
     <App />
   </React.StrictMode>,
   document.getElementById('root')
