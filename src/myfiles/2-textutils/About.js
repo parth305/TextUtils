@@ -22,7 +22,6 @@ export default function About() {
             })
             setbtntext("Enable Dark Mode");
         }
-
     }
     return (
         <>

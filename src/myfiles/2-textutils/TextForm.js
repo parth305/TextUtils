@@ -20,6 +20,7 @@ export default function TextForm(props) {
     let onCopyClick=()=>{
         navigator.clipboard.writeText(text);
         props.showalert("success","Copied to clipbord");
+        document.getSelection().removeAllRanges();
     }
     let onClearClick=()=>{
         setText("");
@@ -38,16 +39,16 @@ export default function TextForm(props) {
             <div className="mb-3">
                 <textarea className="form-control" style={{color:props.mode==="dark"?"white":"black",backgroundColor:props.mode==="dark"?props.color:"white"}} onChange={onStateChange} value={text} id="myBox" rows="10"></textarea>
             </div>
-            <button className="btn btn-primary mx-2" onClick={onUpperCaseClick}>convert to Uppercase</button>
-            <button className="btn btn-primary mx-2" onClick={onLowerCaseClick}>convert to Uppercase</button>
-            <button className="btn btn-primary mx-2" onClick={onCopyClick}>copy to clipborad</button>
-            <button className="btn btn-primary mx-2" onClick={onClearClick}>clear text</button>
-            <button className="btn btn-primary mx-2" onClick={onCapitlizeClick}>Title case</button>
+            <button disabled={text.length===0} className="btn btn-primary mx-2" onClick={onUpperCaseClick}>convert to Uppercase</button>
+            <button disabled={text.length===0} className="btn btn-primary mx-2" onClick={onLowerCaseClick}>convert to Lowercase</button>
+            <button disabled={text.length===0} className="btn btn-primary mx-2" onClick={onCopyClick}>copy to clipborad</button>
+            <button disabled={text.length===0} className="btn btn-primary mx-2" onClick={onClearClick}>clear text</button>
+            <button disabled={text.length===0} className="btn btn-primary mx-2" onClick={onCapitlizeClick}>Title case</button>
         </div>
         <div className="container my-2" style={{color:props.mode==="dark"?"white":"black"}}>
             <h3>Your text summary</h3>
-            <p>{text===""?"0":text.split(" ").length} Words and {text.length} Characters</p>
-            <p>{0.08 * text.split(" ").length} Minutes to Read</p>
+            <p>{text.split(/\s+/).filter((element)=>{return element.length!=0}).length} Words and {text.length} Characters</p>
+            <p>{0.08 * text.split(/\s+/).length} Minutes to Read</p>
             <h3>Priview</h3>
             <p>{text.length===0?"Enter your text in the textarea above to analyze":text}</p>
         </div>
